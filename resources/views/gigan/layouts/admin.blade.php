@@ -94,7 +94,7 @@
                         <div
                             class="group flex items-center w-full px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5 cursor-pointer">
                             <!-- Clickable area for navigation -->
-                            <a href="#" class="flex items-center flex-1">
+                            <a href="{{ route('admin.gigan.pages.index') }}" class="flex items-center flex-1">
                                 <div
                                     class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
                                     <i class="fas fa-file-alt text-white text-base"></i>
@@ -154,7 +154,7 @@
                     </div>
 
                     <!-- Banner -->
-                    <a href="#"
+                    <a href="{{ route('admin.gigan.banner.index') }}"
                         class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                         <div
                             class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
