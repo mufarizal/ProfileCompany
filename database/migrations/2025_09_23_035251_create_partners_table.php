@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained('pages')->onDelete('cascade');
-            $table->string('title')->nullable();
-            $table->string('subtitle')->nullable();
-            $table->string('image_path')->nullable();
-            $table->boolean('status')->default(1);
+            $table->foreignId('landing_page_id')->nullable()->constrained()->onDelete('set null');
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('partners');
     }
 };

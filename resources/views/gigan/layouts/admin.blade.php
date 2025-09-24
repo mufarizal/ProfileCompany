@@ -93,26 +93,22 @@
                         <!-- Main Button with both navigation and dropdown toggle -->
                         <div
                             class="group flex items-center w-full px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5 cursor-pointer">
-                            <!-- Clickable area for navigation -->
-                            <a href="{{ route('admin.gigan.pages.index') }}" class="flex items-center flex-1">
+                            <!-- Area untuk toggle dropdown -->
+                            <div onclick="toggleDropdown('kelola-halaman')" class="flex items-center flex-1">
                                 <div
                                     class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
                                     <i class="fas fa-file-alt text-white text-base"></i>
                                 </div>
-                                <span class="text-white/90 group-hover:text-white transition-colors">Kelola
-                                    Halaman</span>
-                            </a>
-
-                            <!-- Dropdown toggle button -->
-                            <button onclick="toggleDropdown('kelola-halaman')" class="ml-2 p-1">
+                                <span class="text-white/90 group-hover:text-white transition-colors">Page
+                                    Management</span>
                                 <i id="kelola-halaman-icon"
-                                    class="fas fa-chevron-right text-white/60 text-xs transition-transform duration-300"></i>
-                            </button>
+                                    class="fas fa-chevron-right text-white/60 text-xs transition-transform duration-300 ml-2"></i>
+                            </div>
                         </div>
 
                         <!-- Dropdown Menu -->
                         <div id="kelola-halaman-dropdown" class="hidden ml-4 mt-1 space-y-1">
-                            <a href="#"
+                            <a href="{{ route('admin.gigan.landing-pages.index') }}"
                                 class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                                 <div
                                     class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
@@ -122,7 +118,7 @@
                                     class="text-white/80 group-hover:text-white transition-colors text-sm">HomePage</span>
                             </a>
 
-                            <a href="#"
+                            <a href="{{ route('admin.gigan.services.index') }}"
                                 class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                                 <div
                                     class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
@@ -153,17 +149,9 @@
                         </div>
                     </div>
 
-                    <!-- Banner -->
-                    <a href="{{ route('admin.gigan.banner.index') }}"
-                        class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
-                        <div
-                            class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
-                            <i class="fas fa-images text-white text-base"></i>
-                        </div>
-                        <span class="text-white/90 group-hover:text-white transition-colors">Banner</span>
-                    </a>
+
                     <!-- Form Masuk -->
-                    <a href="#"
+                    <a href="{{ route('admin.gigan.services.messages') }}"
                         class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                         <div
                             class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
