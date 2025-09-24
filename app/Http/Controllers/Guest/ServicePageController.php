@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\ServiceMessage;
 use App\Models\ServicePage;
 use Illuminate\Http\Request;
 
@@ -25,8 +26,7 @@ class ServicePageController extends Controller
         ]);
 
         // Simpan ke satu row banner, bisa dipisah ke table service_messages juga
-        $banner = ServicePage::whereNotNull('banner_title')->first();
-        $banner->update($data);
+        ServiceMessage::create($data);
 
         return back()->with('success','Pesan berhasil dikirim!');
     }

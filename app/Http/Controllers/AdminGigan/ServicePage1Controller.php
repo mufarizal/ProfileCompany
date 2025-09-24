@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminGigan;
 
 use App\Http\Controllers\Controller;
+use App\Models\ServiceMessage;
 use App\Models\ServicePage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -99,7 +100,7 @@ class ServicePage1Controller extends Controller
     // PESAN PENGUNJUNG
     public function messages()
     {
-        $requests = ServicePage::whereNotNull('message')->latest()->paginate(20);
+        $requests = ServiceMessage::whereNotNull('message')->latest()->paginate(20);
         return view('gigan.admin.services.message', compact('requests'));
     }
 }

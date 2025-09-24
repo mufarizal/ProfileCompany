@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminGigan\DashboardController;
 use App\Http\Controllers\AdminGigan\FooterController;
 use App\Http\Controllers\AdminGigan\LandingPage_PartnerController;
 
+use App\Http\Controllers\AdminGigan\PortofolioPageController;
 use App\Http\Controllers\AdminGigan\ServicePage1Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Guest\LandingPageController;
@@ -20,6 +21,7 @@ GUEST
 Route::get('/', [LandingPageController::class, 'index'])->name('frontend.landingpage');
 Route::get('/services', [ServicePageController::class,'index'])->name('frontend.services');
 Route::post('/services/contact', [ServicePageController::class,'contact'])->name('services.contact');
+Route::get('/portfolio', [\App\Http\Controllers\Guest\PortofolioPageController::class, 'index'])->name('frontend.portofolio');
 
 // Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('guest.portfolio');
 // Route::get('/services', [HomeController::class, 'services'])->name('guest.services');
@@ -71,5 +73,15 @@ Route::prefix('gigan/admin')->name('admin.gigan.')->middleware(['auth','is_admin
     // pengunjung messages
     Route::get('/messages', [ServicePage1Controller::class,'messages'])->name('services.messages');
 });
+
+    //PORTOFOLIO
+     Route::get('/portfolio', [PortofolioPageController::class, 'index'])->name('portfolio.index');
+    Route::post('/portfolio/banner', [PortofolioPageController::class, 'updateBanner'])->name('portfolio.banner.update');
+
+    Route::get('/portfolio/project/create', [PortofolioPageController::class, 'createProject'])->name('portfolio.project.create');
+    Route::post('/portfolio/project', [PortofolioPageController::class, 'storeProject'])->name('portfolio.project.store');
+    Route::get('/portfolio/project/{project}/edit', [PortofolioPageController::class, 'editProject'])->name('portfolio.project.edit');
+    Route::put('/portfolio/project/{project}', [PortofolioPageController::class, 'updateProject'])->name('portfolio.project.update');
+    Route::delete('/portfolio/project/{project}', [PortofolioPageController::class, 'destroyProject'])->name('portfolio.project.destroy');
 });
 

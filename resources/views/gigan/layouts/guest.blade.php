@@ -15,9 +15,7 @@
         <ul>
             <li><a href="{{ route('frontend.landingpage') }}">Home</a></li>
             <li><a href="{{ route('frontend.services') }}">Services</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{ route('frontend.portofolio') }}">Portfolio</a></li>
         </ul>
     </nav>
 

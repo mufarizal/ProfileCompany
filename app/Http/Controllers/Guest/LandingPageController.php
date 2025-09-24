@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\LandingPage;
+use App\Models\PortofolioProject;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -12,7 +13,7 @@ class LandingPageController extends Controller
     {
         // Ambil LandingPage pertama beserta relasi partners
         $landingPage = LandingPage::with('partners')->first();
-
-        return view('gigan.frontend.landingpage', compact('landingPage'));
+        $projects = PortofolioProject::latest()->take(3)->get();
+        return view('gigan.frontend.landingpage', compact('landingPage', 'projects'));
     }
 }

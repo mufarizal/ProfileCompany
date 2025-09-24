@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('portofolio_projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('landing_pages_id')->nullable()->constrained()->onDelete('set null');
-            $table->string('name');
+            $table->unsignedBigInteger('portofolio_page_id');
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
+
+            $table->foreign('portofolio_page_id')->references('id')->on('portofolio_pages')->onDelete('cascade');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('portofolio_projects');
     }
 };

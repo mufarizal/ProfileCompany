@@ -28,6 +28,34 @@
         </div>
     </section>
 
+
+    {{--  PROJECTS  --}}
+    <section class="landing-projects py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Our Latest Projects</h2>
+            <div class="row">
+                @foreach ($projects as $project)
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top"
+                                alt="{{ $project->title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $project->title }}</h5>
+                                <p class="card-text">{{ Str::limit($project->description, 100) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- Tombol ke halaman portofolio lengkap --}}
+            <div class="text-center mt-4">
+                <a href="{{ route('frontend.portofolio') }}" class="btn btn-primary">Lihat Semua Project</a>
+            </div>
+        </div>
+    </section>
+
+
     {{-- Partner --}}
     @if ($landingPage->partners->count())
         <section class="partners">

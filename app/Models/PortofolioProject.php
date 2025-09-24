@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class PortofolioProject extends Model
 {
     protected $fillable = [
-        'landing_pages_id',
+        'portofolio_page_id',
         'title',
         'description',
         'image',
     ];
 
-    public function landingPage()
+    public function page()
     {
-        return $this->belongsTo(LandingPage::class);
+        return $this->belongsTo(PortofolioPage::class);
     }
 }

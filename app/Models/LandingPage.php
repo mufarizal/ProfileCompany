@@ -17,16 +17,7 @@ class LandingPage extends Model
         'banner_subtitle',
     ];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
-
+    
     public function partners()
     {
         return $this->hasMany(Partner::class);

@@ -42,7 +42,7 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class=" w-64 bg-gradient-to-br from-primary-800 via-primary-900 to-slate-900 text-white flex flex-col shadow-2xl relative overflow-hidden transition-all duration-300 lg:translate-x-0 transform -translate-x-full lg:relative absolute z-50 h-full">
+            class="w-64 bg-gradient-to-br from-primary-800 via-primary-900 to-slate-900 text-white flex flex-col shadow-2xl relative overflow-hidden transition-all duration-300 lg:translate-x-0 transform -translate-x-full lg:relative absolute z-50 h-full">
             <div class="absolute inset-0 bg-gradient-to-br from-primary-800/50 via-primary-900/50 to-slate-900/50">
             </div>
             <div class="absolute top-0 left-0 w-full h-full">
@@ -50,40 +50,38 @@
                 <div class="absolute bottom-16 left-4 w-24 h-24 bg-primary-400/10 rounded-full blur-xl"></div>
             </div>
 
-            <!-- Logo & User Info - Fixed at top -->
-            <div class="px-4 py-6 relative z-10 flex-shrink-0">
-                <div class="flex items-center mb-6">
+            <!-- Logo Section - Fixed at top -->
+            <div class="px-6 py-6 relative z-10 flex-shrink-0 border-b border-white/10">
+                <div class="flex items-center justify-center mb-4">
                     <div
-                        class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
-                        <span class="text-white font-bold text-lg">
-                            {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                        </span>
+                        class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center shadow-xl">
+                        <!-- LOGO PERUSAHAAN -->
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain" />
                     </div>
-                    <div>
-                        <p class="text-base font-semibold text-white leading-tight">{{ auth()->user()->name }}</p>
-                        <p class="text-xs text-primary-200 mt-1 px-2 py-1 bg-primary-700/30 rounded-full inline-block">
-                            Administrator</p>
-                    </div>
+                </div>
+                <div class="text-center">
+                    <h2 class="text-lg font-bold text-white">{{ $footer->company_name }}</h2>
+                    <p class="text-xs text-primary-200 mt-1">{{ auth()->user()->name }}</p>
                 </div>
             </div>
 
             <!-- Navigation - Scrollable -->
             <div
                 class="flex-1 overflow-y-auto px-4 relative z-10 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
-                <nav class="space-y-1 text-sm pb-6">
+                <nav class="space-y-2 text-sm py-4">
                     <!-- Dashboard -->
                     <a href="{{ route('admin.gigan.dashboard') }}"
-                        class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 relative
+                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1 relative
         {{ request()->routeIs('admin.dashboard') ? 'bg-white/10 font-semibold shadow-lg border border-white/10' : 'hover:bg-white/5' }}">
                         <div
-                            class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center
+                            class="w-8 h-8 mr-3 bg-white/10 rounded-lg flex items-center justify-center
             {{ request()->routeIs('admin.dashboard') ? 'bg-primary-500 shadow-lg' : 'group-hover:bg-white/20' }}">
-                            <i class="fas fa-gauge text-white text-base"></i>
+                            <i class="fas fa-gauge text-white text-sm"></i>
                         </div>
                         <span class="text-white/90 group-hover:text-white transition-colors">Dashboard</span>
                         @if (request()->routeIs('admin.dashboard'))
                             <div
-                                class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-primary-400 rounded-l-full">
+                                class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-primary-400 rounded-l-full">
                             </div>
                         @endif
                     </a>
@@ -92,17 +90,17 @@
                     <div class="relative">
                         <!-- Main Button with both navigation and dropdown toggle -->
                         <div
-                            class="group flex items-center w-full px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5 cursor-pointer">
+                            class="group flex items-center w-full px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5 cursor-pointer">
                             <!-- Area untuk toggle dropdown -->
                             <div onclick="toggleDropdown('kelola-halaman')" class="flex items-center flex-1">
                                 <div
-                                    class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
-                                    <i class="fas fa-file-alt text-white text-base"></i>
+                                    class="w-8 h-8 mr-3 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20">
+                                    <i class="fas fa-file-alt text-white text-sm"></i>
                                 </div>
                                 <span class="text-white/90 group-hover:text-white transition-colors">Page
                                     Management</span>
                                 <i id="kelola-halaman-icon"
-                                    class="fas fa-chevron-right text-white/60 text-xs transition-transform duration-300 ml-2"></i>
+                                    class="fas fa-chevron-right text-white/60 text-xs transition-transform duration-300 ml-auto"></i>
                             </div>
                         </div>
 
@@ -111,8 +109,8 @@
                             <a href="{{ route('admin.gigan.landing-pages.index') }}"
                                 class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                                 <div
-                                    class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
-                                    <i class="fas fa-house text-white/70 text-sm"></i>
+                                    class="w-6 h-6 mr-3 bg-white/5 rounded-md flex items-center justify-center group-hover:bg-white/10">
+                                    <i class="fas fa-house text-white/70 text-xs"></i>
                                 </div>
                                 <span
                                     class="text-white/80 group-hover:text-white transition-colors text-sm">HomePage</span>
@@ -121,51 +119,43 @@
                             <a href="{{ route('admin.gigan.services.index') }}"
                                 class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                                 <div
-                                    class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
-                                    <i class="fas fa-cogs text-white/70 text-sm"></i>
+                                    class="w-6 h-6 mr-3 bg-white/5 rounded-md flex items-center justify-center group-hover:bg-white/10">
+                                    <i class="fas fa-cogs text-white/70 text-xs"></i>
                                 </div>
                                 <span
                                     class="text-white/80 group-hover:text-white transition-colors text-sm">Layanan</span>
                             </a>
 
-                            <a href="#"
+                            <a href="{{ route('admin.gigan.portfolio.index') }}"
                                 class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                                 <div
-                                    class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
-                                    <i class="fas fa-book-open-reader text-white/70 text-sm"></i>
+                                    class="w-6 h-6 mr-3 bg-white/5 rounded-md flex items-center justify-center group-hover:bg-white/10">
+                                    <i class="fa-solid fa-newspaper text-white/70 text-xs"></i>
                                 </div>
                                 <span
-                                    class="text-white/80 group-hover:text-white transition-colors text-sm">Kelas</span>
+                                    class="text-white/80 group-hover:text-white transition-colors text-sm">Portofolio</span>
                             </a>
-                            <a href="#"
-                                class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
-                                <div
-                                    class="w-7 h-7 mr-3 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-white/10">
-                                    <i class="fas fa-image text-white/70 text-sm"></i>
-                                </div>
-                                <span
-                                    class="text-white/80 group-hover:text-white transition-colors text-sm">Galleri</span>
-                            </a>
+
+
                         </div>
                     </div>
 
-
                     <!-- Form Masuk -->
                     <a href="{{ route('admin.gigan.services.messages') }}"
-                        class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
+                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                         <div
-                            class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
-                            <i class="fas fa-sign-in-alt text-white text-base"></i>
+                            class="w-8 h-8 mr-3 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20">
+                            <i class="fas fa-sign-in-alt text-white text-sm"></i>
                         </div>
                         <span class="text-white/90 group-hover:text-white transition-colors">Form Masuk</span>
                     </a>
 
                     <!-- Footer Website -->
                     <a href="{{ route('admin.gigan.footer.edit') }}"
-                        class="group flex items-center px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
+                        class="group flex items-center px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-1 hover:bg-white/5">
                         <div
-                            class="w-9 h-9 mr-4 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20">
-                            <i class="fas fa-grip-horizontal text-white text-base"></i>
+                            class="w-8 h-8 mr-3 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20">
+                            <i class="fas fa-grip-horizontal text-white text-sm"></i>
                         </div>
                         <span class="text-white/90 group-hover:text-white transition-colors">Footer Website</span>
                     </a>
@@ -174,7 +164,7 @@
 
             <!-- Footer sticky -->
             <div
-                class="px-4 pt-6 pb-6 bg-gradient-to-r from-slate-900/80 to-primary-900/80 backdrop-blur-sm relative z-10 border-t border-white/10 flex-shrink-0">
+                class="px-4 pt-4 pb-6 bg-gradient-to-r from-slate-900/80 to-primary-900/80 backdrop-blur-sm relative z-10 border-t border-white/10 flex-shrink-0">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"
@@ -214,8 +204,6 @@
 
                 <!-- Header Actions -->
                 <div class="flex items-center space-x-6">
-
-
                     <!-- User Avatar -->
                     <div
                         class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
@@ -230,7 +218,6 @@
             <main class="flex-1 p-6 bg-gray-50 overflow-y-auto">
                 <div class="max-w-7xl mx-auto">
                     @yield('content')
-
                 </div>
             </main>
         </div>

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('portofolio_pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('landing_pages_id')->nullable()->constrained()->onDelete('set null');
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->string('banner_title')->nullable();
+            $table->string('banner_subtitle')->nullable();
+            $table->string('banner_image')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('portofolio_pages');
     }
 };
